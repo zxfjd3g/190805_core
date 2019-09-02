@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>02_JS常用的编程范式</title>
+</head>
+<body>
+  <!-- 
+    1). 命令式编程:
+        IP: Imperative Program
+        描述: 一步步实现整体流程所有工作
+             其它编程范式的内部都包装/包含了命令式编程
+    2). 声明式编程
+        DP: Declarative Program
+        描述: 通过封装让上层的使用者不需要关心实现的流程, 而只需要指定整个流程中的变化的操作
+             react/vue/数据库操作都很好的利用/体现了声明式编程
+    3). 函数式编程
+        FP: Functional Program
+        描述: 把任务抽象成n个函数组合使用实现功能
+            数组声明式系列方法 / lodash工具函数 / react高阶组件 / react-redux
+    4). 面向对象编程
+        OOP: Object Oriented Program
+        描述: 把任务抽象成一个或一组对象的数据和操作
+            所有定义构造函数 => 给实例添加属性 => 给原型添加方法 => 创建实例对象
+  -->
+  <script>
+    /*  
+      1). 命令式编程
+    */
+    function sum(arr) {
+      let result = 0
+      for (let index = 0; index < arr.length; index++) {
+        result += arr[index]
+      }
+      return result
+    }
+
+    /*  
+      2). 声明式编程
+      3). 函数式编程
+    */
+    function sum2(arr) {
+      return arr.reduce((pre, item) => pre + item, 0)
+    }
+
+    /* 
+    4). 面向对象编程
+    */
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+    Person.prototype.speak = function () {
+      
+    }
+    const p = new Person('Tom', 12)
+
+  </script>
+</body>
+</html>

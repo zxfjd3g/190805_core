@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内存泄漏与溢出</title>
+</head>
+<body>
+  <!-- 1. 内存泄漏: 内存数据不再使用, 没有及时释放 -->
+  <script>
+    // 1. 未清除的定时器/监听
+    const intervalId = setInterval(() => {
+      console.log('定时器回调执行')
+    }, 1000)
+
+    // 在某个特定的时刻清除定时器
+    // clearInterval(intervalId)
+
+    // 2. 意外的全局变量
+    function fn() {
+      var a = 2
+      b = [] // b在fn执行完后没有释放, 数组没有成为垃圾对象
+    }
+    fn()
+
+    // 3. 未及时释放的闭包变量
+    function fn1() {
+      var a = []
+      function fn2() {
+        console.log('fn2', a)
+      }
+      return fn2
+    }
+    var f = fn1()
+    f()
+    // 后面不再需要使用a时, 没有及时释放
+    f = null
+  </script>
+
+  <!-- 2. 内存溢出: 运行需要的内存超过了能提供的最大的内存 -->
+  <script>
+    const arr = []
+    for (let index = 0; index < 100000; index++) {
+      arr.push(new Array(100000))
+    }
+  </script>
+</body>
+</html>

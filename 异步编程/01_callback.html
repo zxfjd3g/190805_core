@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>异步编程1: 回调函数</title>
+</head>
+<body>
+<!-- 
+  <script>
+    // 同步执行的回调函数
+    [1, 3, 5].forEach(item => console.log(item))
+    console.log('forEach()之后')
+
+    // 异步执行的回调函数
+    setTimeout(() => {
+      console.log('setTimeout callback()')
+    }, 0)
+    console.log('setTimeout()之后')
+
+  </script>
+ -->
+
+ 
+
+  <script>
+    function fn1() {
+      console.log('fn1() 启动长时间的任务处理')
+      console.log('fn1() 完成一段长时间的任务')
+    }
+
+    function fn2() {
+      console.log('fn2() 在fn1执行完成后才执行')
+    }
+
+    function fn3() {
+      console.log('fn3() 初始执行不依赖fn1的各种短时间的操作')
+    }
+  </script>
+
+<!--   
+  <script>
+    /* 不使用回调函数进行同步处理 */
+    fn1()
+    fn2()
+    fn3()
+  </script>
+ -->
+
+  <script>
+    /* 使用回调函数进行异步处理 */
+    function fn1(callback) {
+      console.log('fn1() 启动长时间的任务处理')
+      setTimeout(() => {
+        console.log('fn1() 完成一段长时间的任务')
+        callback()
+      }, 1000);
+    }
+    fn1(fn2)
+    fn3()
+  </script>
+  
+</body>
+</html>

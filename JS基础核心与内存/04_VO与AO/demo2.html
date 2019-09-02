@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>提升的先后与重名问题</title>
+</head>
+<body>
+  <script>
+    function a1() {
+      console.log('a1()----')
+    }
+    function a1() {
+      console.log('a1()++++')
+    }
+
+    var a1 = 3
+
+    var a2 = 4
+    var a2 = 5
+    
+  </script>
+</body>
+</html>

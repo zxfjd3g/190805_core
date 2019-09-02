@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浏览器对闭包的优化</title>
+</head>
+<body>
+  <script>
+    function fn1() {
+      var a = 2
+      var b = []
+      for (let index = 0; index < 1000000; index++) {
+        b[index] = 1000
+      }
+      function fn2() {
+        a++
+        console.log(a)
+      }
+      return fn2
+    }
+    const f = fn1()
+    f()
+  </script>
+</body>
+</html>

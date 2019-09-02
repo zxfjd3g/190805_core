@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>深入理解: JS事件循环机制</title>
+</head>
+<body>
+  
+  <script>
+    setTimeout(() => {
+      console.log('定时器 callback()')
+    }, 0)
+    console.log('setTimeout()之后')
+
+    Promise.resolve(2).then(value => {
+      console.log('Promise onResolved()', value)
+    })
+    console.log('promise.then()之后')
+  </script>
+</body>
+</html>
