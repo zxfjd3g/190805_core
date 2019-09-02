@@ -1,16 +1,9 @@
-var color = 'blue';
-
-function changeColor() {
-  var anotherColor = 'red';
-
-  function swapColors() {
-    var tempColor = anotherColor;
-    anotherColor = color;
-    color = tempColor;
-  }
-
-  return swapColors;
+function f1(){ 
+  var n=999; 
+  function f2 () { 
+    alert(n); 
+  } 
+  return f2; 
 }
-
-const result = changeColor();
+var result = f1 (); 
 result();
